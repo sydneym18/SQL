@@ -1,0 +1,42 @@
+--Create a grocery store database 
+
+/**Sydney's Candy Store:
+Hershey Bars (10)
+Skittles (13)
+Kit Kats (17)
+Sour Patch Kids (20)
+M&Ms (11)
+Sweedish Fish (21)
+Take 5 (7)
+Gummy Worms (18)
+Almond Joy (9)
+Nerds (23)
+Twix (13)
+Lolipops (9)
+Snickers (21)
+Air Heads (12)
+Milky Way (17)
+**/
+CREATE TABLE candy (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, price INTEGER);
+
+INSERT INTO candy VALUES(1, "Hershey Bars", 10, 3, 1.00);
+INSERT INTO candy VALUES(2, "Skittles", 13, 1, 1.15);
+INSERT INTO candy VALUES(3, "Kit Kats", 17, 2, 1.05);
+INSERT INTO candy VALUES(4, "Sour Patch Kids", 20, 1, 1.25);
+INSERT INTO candy VALUES(5, "M&Ms", 11, 2, 0.99);
+INSERT INTO candy VALUES(6, "Sweedish Fish", 21, 1, 1.00);
+INSERT INTO candy VALUES(7, "Take 5", 7, 3, 0.99);
+INSERT INTO candy VALUES(8, "Gummy Worms", 18, 1, 1.00);
+INSERT INTO candy VALUES(9, "Almond Joy", 9, 3, 1.25);
+INSERT INTO candy VALUES(10, "Nerds", 23, 2, 1.05);
+INSERT INTO candy VALUES(11, "Twix", 13, 2, 1.15);
+INSERT INTO candy VALUES(12, "Lolipops", 9, 1, 0.50);
+INSERT INTO candy VALUES(13, "Snickers", 21, 3, 1.25);
+INSERT INTO candy VALUES(14, "Air Heads", 12, 2, 0.50);
+INSERT INTO candy VALUES(15, "Milky Way", 17, 3, 1.00);
+
+--display the database ordered by price 
+SELECT * FROM candy ORDER BY price;
+
+--which aisle has the highest quantity of candy?
+SELECT aisle, SUM(quantity) FROM candy GROUP BY aisle;
