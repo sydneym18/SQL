@@ -1,0 +1,50 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE famous_people
+(id INTEGER, name TEXT, career TEXT);
+
+INSERT INTO famous_people(id, name, career) VALUES (1, "Will Smith", "actor"); 
+INSERT INTO famous_people(id, name, career) VALUES (2, "Amber Mark", "singer");
+INSERT INTO famous_people(id, name, career) VALUES (3, "Emma Stone", "actor");
+INSERT INTO famous_people(id, name, career) VALUES (4, "Leon Bridges", "singer");
+
+CREATE TABLE their_work
+(id INTEGER, title TEXT, last_name TEXT);
+
+INSERT INTO their_work(id, title, last_name) VALUES (1, "I Am Legend", "Smith");
+INSERT INTO their_work(id, title, last_name) VALUES (1, "Focus", "Smith");
+INSERT INTO their_work(id, title, last_name) VALUES (1, "Bad Boys", "Smith");
+INSERT INTO their_work(id, title, last_name) VALUES (2, "Love Me Right", "Mark");
+INSERT INTO their_work(id, title, last_name) VALUES (2, "Waiting", "Mark");
+INSERT INTO their_work(id, title, last_name) VALUES (2, "What If", "Mark");
+INSERT INTO their_work(id, title, last_name) VALUES (3, "Easy A", "Stone");
+INSERT INTO their_work(id, title, last_name) VALUES (3, "Cruella", "Stone");
+INSERT INTO their_work(id, title, last_name) VALUES (3, "House Bunny", "Stone");
+INSERT INTO their_work(id, title, last_name) VALUES (4, "Shy", "Bridges");
+INSERT INTO their_work(id, title, last_name) VALUES (4, "Mrs", "Bridges");
+INSERT INTO their_work(id, title, last_name) VALUES (4, "Details", "Bridges");
+
+CREATE TABLE ages
+(id INTEGER, first_name TEXT, age INTEGER);
+
+INSERT INTO ages(id, first_name, age) VALUES (1, "Will", 53);
+INSERT INTO ages(id, first_name, age) VALUES (2, "Amber", 28);
+INSERT INTO ages(id, first_name, age) VALUES (3, "Emma", 33);
+INSERT INTO ages(id, first_name, age) VALUES (4, "Leon", 33);
+
+--display the correlating data from both tables ordered by name.
+SELECT famous_people.career, famous_people.name, their_work.title, famous_people.id
+FROM famous_people
+JOIN their_work
+ON their_work.id = famous_people.id
+ORDER BY name;
+
+--display the data from the third table and join it with the data from the first table.
+SELECT ages.first_name, ages.age, famous_people.career FROM ages 
+JOIN famous_people
+ON ages.id = famous_people.id;
+
+--display corresponding information from all three tables.
+SELECT famous_people.id, famous_people.name, ages.age, famous_people.career FROM famous_people
+JOIN ages
+ON famous_people.id = ages.id;
